@@ -20,6 +20,10 @@ const cartReducer = (state, action) => {
       const updatedAmount = getExistingItem.amount + action.item.amount;
       const getUpdatedPrice = getExistingItem.originalPrice * updatedAmount;
 
+      if (updatedAmount > 5) {
+        alert("You have chosen the maximum limit of 5 items.");
+        return { ...state };
+      }
       const updatedItem = {
         ...getExistingItem,
         amount: updatedAmount,
