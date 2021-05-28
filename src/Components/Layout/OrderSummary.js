@@ -32,7 +32,7 @@ const OrderSummary = (props) => {
 
   const maxLength = maxLengthString(addressDetails);
   const address = addressArray.map((address) => {
-    const add = address.trim().padEnd(maxLength, "\xa0 \xa0");
+    const add = address.trim();
     return (
       <h4 key={Math.random()} className={styles["h4"]}>
         {add}
@@ -44,7 +44,7 @@ const OrderSummary = (props) => {
     <div className={styles["address-details"]}>
       <div className={styles["address-item"]}>
         <p className={styles["margin"]}>Your Name</p>
-        <h4 className={styles["h4"]}>{fullName.padEnd(maxLength, "\xa0")}</h4>
+        <h4 className={styles["h4"]}>{fullName}</h4>
       </div>
 
       <div className={styles["address-item"]}>
@@ -54,12 +54,12 @@ const OrderSummary = (props) => {
 
       <div className={styles["address-item"]}>
         <p className={styles["margin"]}>City</p>
-        <h4 className={styles["h4"]}>{city.padEnd(maxLength, "\xa0")}</h4>
+        <h4 className={styles["h4"]}>{city}</h4>
       </div>
 
       <div className={styles["address-item"]}>
         <p className={styles["margin"]}>Pincode</p>
-        <h4 className={styles["h4"]}>{pincode.padEnd(maxLength, "\xa0")}</h4>
+        <h4 className={styles["h4"]}>{pincode}</h4>
       </div>
     </div>
   );
@@ -85,8 +85,8 @@ const OrderSummary = (props) => {
       modalOverlayClassName={styles["modal"]}
     >
       <Card className={styles["order-summary"]}>
+        <h2 className={styles["h2"]}>Review Your Order</h2>
         <div className={styles["overflow"]}>
-          <h2 className={styles["h2"]}>Review Your Order</h2>
           <div className={styles["cart-details"]}>{cartItems}</div>
           {addressJSX}
         </div>

@@ -39,13 +39,10 @@ function App() {
   };
 
   const getAddressHandler = (addressDetails) => {
-    console.log(addressDetails);
     setGetAddress(addressDetails);
     setOrderSummaryVisible(true);
     setAddressVisible(false);
   };
-
-  console.log(getAddress);
 
   return (
     <>
