@@ -27,7 +27,7 @@ const Cart = (props) => {
   });
 
   return (
-    <Modal onHideCart={props.onHideCart}>
+    <Modal htmlId={"cart-overlay"} onHideElement={props.onHideCart}>
       <div className={styles["cart-card"]}>
         <div className={styles["overflow"]}>{cartItems}</div>
         <div className={styles["total-amount"]}>
@@ -35,7 +35,11 @@ const Cart = (props) => {
           <h3 className={styles["h3-tag"]}>{totalAmount}</h3>
         </div>
         <div className={styles["buttons"]}>
-          {isItemPresent && <button className={styles["button"]}>Order</button>}
+          {isItemPresent && (
+            <button className={styles["button"]} onClick={props.onShowAddress}>
+              Check Out
+            </button>
+          )}
           <button onClick={props.onHideCart} className={styles["button"]}>
             Close
           </button>

@@ -1,13 +1,18 @@
 import styles from "./MealsSummary.module.css";
+import React from "react";
+
 const MealSummary = () => {
   return (
     <section className={styles.card}>
-      <h2> Delicious Meals, Served to You </h2>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-      reprehenderit error accusantium consectetur quo possimus animi minima
-      consequuntur corrupti, obcaecati vel quas nihil officiis voluptatum
-      deleniti soluta ipsa illum in minus sequi quos enim ipsum ex? Fugit
-      dolorum non animi.
+      <h2>Delicious Food, Delivered To You</h2>
+      <p>
+        Choose your favorite meal from our broad selection of available meals
+        and enjoy a delicious lunch or dinner at home.
+      </p>
+      <p>
+        All our meals are cooked with high-quality ingredients, just-in-time and
+        of course by experienced chefs!
+      </p>
     </section>
   );
 };

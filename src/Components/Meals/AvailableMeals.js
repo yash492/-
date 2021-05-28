@@ -1,35 +1,29 @@
 import Card from "../UI/Card";
 import MealItem from "./MealItem";
-
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+import { useEffect, useState } from "react";
+import useHttp from "../../hooks/use-http";
+import LoadingIcon from "../UI/LoadingIcon";
 
 const AvailableMeals = () => {
-  const itemList = DUMMY_MEALS.map((item) => (
+  const [mangoesList, setMangoesList] = useState([]);
+
+  const [loading, error, fetchData] = useHttp();
+  useEffect(() => {
+    const transformDataIntoArrayForDisplay = (data) => {
+      const getMangoesListFromApi = [];
+      for (const key in data) {
+        getMangoesListFromApi.push(data[key]);
+      }
+      setMangoesList(getMangoesListFromApi);
+    };
+
+    fetchData(
+      "https://mymangoes-f766d-default-rtdb.firebaseio.com/availableMealsItem.json",
+      transformDataIntoArrayForDisplay
+    );
+  }, [fetchData]);
+
+  const itemList = mangoesList.map((item) => (
     <MealItem
       key={item.id}
       name={item.name}
@@ -40,7 +34,20 @@ const AvailableMeals = () => {
     />
   ));
 
-  return <Card>{itemList}</Card>;
+  return (
+    <>
+      {loading && <LoadingIcon />}
+      {!loading && !error && <Card>{itemList}</Card>}
+      {error && (
+        <Card>
+          <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+          <p style={{ color: "red", textAlign: "center" }}>
+            Refresh the page and Try Again !!!
+          </p>
+        </Card>
+      )}
+    </>
+  );
 };
 
 export default AvailableMeals;
