@@ -4,7 +4,6 @@
   align-items: center;
   margin-top: 1rem;
   padding: 0 0.5rem;
-  max-height: 80%;
 }
 .address-item {
   display: flex;
@@ -12,6 +11,12 @@
   align-items: center;
   margin: 0;
   padding: 0 1rem;
+}
+
+.overflow {
+  overflow: auto;
+  padding-right: 0.5rem;
+  height: 60vh;
 }
 
 .margin {
@@ -52,6 +57,7 @@
 .name {
   margin-bottom: 1rem;
   margin-top: 0;
+  width: 30%;
 }
 
 .amount {
@@ -108,7 +114,7 @@
 }
 
 .modal {
-  top: -0.5rem;
+  top: -2rem;
 }
 
 @media screen and (max-width: 768px) {

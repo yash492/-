@@ -85,9 +85,11 @@ const OrderSummary = (props) => {
       modalOverlayClassName={styles["modal"]}
     >
       <Card className={styles["order-summary"]}>
-        <h2 className={styles["h2"]}>Review Your Order</h2>
-        <div className={styles["cart-details"]}>{cartItems}</div>
-        {addressJSX}
+        <div className={styles["overflow"]}>
+          <h2 className={styles["h2"]}>Review Your Order</h2>
+          <div className={styles["cart-details"]}>{cartItems}</div>
+          {addressJSX}
+        </div>
         <div className={styles["total-amount"]}>
           <h3 className={styles["h3-tag"]}>Total Amount</h3>
           <h3 className={styles["h3-tag"]}>{totalAmountSummary}</h3>
